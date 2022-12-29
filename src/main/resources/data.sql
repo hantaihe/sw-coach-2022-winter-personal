@@ -18,4 +18,10 @@ VALUES
     (1, '스프링을 열심히 공부하고 싶습니다.','왜이래 잘 안풀릴까요.'),
     (1, '저랑 스터디하실분?','혼자 공부하려니 너무 힘듭니다. 좀 알려주세요!');
 
+TRUNCATE TABLE student;
+INSERT INTO student(grade, name, phone)
+VALUES
+    ('1', '김철수','010-1234-1234'),
+    ('1', '김영희','010-1234-2134');
+
 SET FOREIGN_KEY_CHECKS=1;
