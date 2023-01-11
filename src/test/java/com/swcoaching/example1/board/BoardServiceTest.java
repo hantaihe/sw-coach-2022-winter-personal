@@ -27,14 +27,14 @@ class BoardServiceTest {
         BoardRepository boardRepository = mock(BoardRepository.class);
         long testBoardId = 1L;
         String testTitle = "게시판 제목 테스트";
-        String testRemark = "게시판 비고 테스트";
+        String testIntroduction = "게시판 비고 테스트";
         String testPostContent = "게시판 글 내용 테스트";
 
         when(boardEntity.getId()).thenReturn(testBoardId);
         when(boardEntity.getTitle()).thenReturn(testTitle);
-        when(boardEntity.getRemark()).thenReturn(testRemark);
+        when(boardEntity.getIntroduction()).thenReturn(testIntroduction);
 
-        when(postEntity.getContents()).thenReturn(testPostContent);
+        when(postEntity.getContent()).thenReturn(testPostContent);
         when(boardEntity.getPosts()).thenReturn(List.of(postEntity));
 
         when(boardRepository.findById(testBoardId)).thenReturn(Optional.of(boardEntity));
@@ -46,9 +46,9 @@ class BoardServiceTest {
         // then
         assertEquals(board.getId(), testBoardId);
         assertEquals(board.getTitle(), testTitle);
-        assertEquals(board.getRemark(), testRemark);
+        assertEquals(board.getIntroduction(), testIntroduction);
 
         assertEquals(board.getPosts().size(), 1);
-        assertEquals(board.getPosts().get(0).getContents(), testPostContent);
+        assertEquals(board.getPosts().get(0).getContent(), testPostContent);
     }
 }

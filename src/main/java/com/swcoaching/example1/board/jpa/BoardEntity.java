@@ -1,5 +1,6 @@
 package com.swcoaching.example1.board.jpa;
 
+import com.swcoaching.example1.common.jpa.BaseEnitity;
 import lombok.Getter;
 
 import jakarta.persistence.Column;
@@ -15,7 +16,7 @@ import java.util.List;
 @Getter
 @Table(name = "board")
 @Entity
-public class BoardEntity {
+public class BoardEntity extends BaseEnitity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -30,12 +31,11 @@ public class BoardEntity {
    * 게시판 설명
    */
   @Column(columnDefinition = "text")
-  private String remark;
+  private String introduction;
 
   /**
    * 게시물
    */
   @OneToMany(mappedBy = "board")
   public List<PostEntity> posts = new ArrayList<>();
-
 }

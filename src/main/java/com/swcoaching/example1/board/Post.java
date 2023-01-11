@@ -14,15 +14,15 @@ public class Post {
 
   private final String title;
 
-  private final String contents;
+  private final String content;
 
-  public Post(Long id, String title, String contents) {
+  public Post(Long id, String title, String content) {
     this.id = id;
     this.title = title;
-    this.contents = contents;
+    this.content = content;
   }
 
   public static Post of(PostEntity postEntity) {
-    return new Post(postEntity.getId(), postEntity.getTitle(), postEntity.getContents());
+    return new Post(postEntity.getId(), postEntity.getTitle(), postEntity.getContent());
   }
 }

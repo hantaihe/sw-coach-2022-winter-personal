@@ -14,14 +14,14 @@ public class Board {
 
   private final String title;
 
-  private final String remark;
+  private final String introduction;
 
   private final List<Post> posts;
 
-  public Board(Long id, String title, String remark, List<Post> posts) {
+  public Board(Long id, String title, String introduction, List<Post> posts) {
     this.id = id;
     this.title = title;
-    this.remark = remark;
+    this.introduction = introduction;
     this.posts = posts;
   }
 
@@ -30,7 +30,7 @@ public class Board {
             .stream().map(Post::of).collect(Collectors.toList());
     return new Board(boardEntity.getId(),
             boardEntity.getTitle(),
-            boardEntity.getRemark(),
+            boardEntity.getIntroduction(),
             posts);
   }
 }

@@ -1,15 +1,13 @@
 package com.swcoaching.example1.board.jpa;
 
+import com.swcoaching.example1.comment.jpa.CommentEntity;
+import com.swcoaching.example1.common.jpa.BaseEnitity;
+import com.swcoaching.example1.user.jpa.UserEntity;
+import jakarta.persistence.*;
 import lombok.Getter;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 게시물
@@ -17,7 +15,7 @@ import jakarta.persistence.Table;
 @Getter
 @Table(name = "post")
 @Entity
-public class PostEntity {
+public class PostEntity extends BaseEnitity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -26,10 +24,16 @@ public class PostEntity {
   private String title;
 
   @Column(columnDefinition = "text")
-  private String contents;
+  private String content;
 
   @ManyToOne
   @JoinColumn(name = "boardId")
   private BoardEntity board;
 
+  @ManyToOne
+  @JoinColumn(name = "userId")
+  private UserEntity user;
+
+  @OneToMany(mappedBy = "post")
+  public List<CommentEntity> comments = new ArrayList<>();
 }
