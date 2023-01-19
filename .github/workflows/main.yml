@@ -24,18 +24,4 @@ jobs:
       
     - name: Gradle Test
       run: ./gradlew test
-    
-    - name: Slack Notification
-      uses: rtCamp/action-slack-notify@v2
-      env:        
-        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        SLACK_ICON: https://github.com/rtCamp.png?size=48
-        SLACK_TITLE: 빌드 결과
-        SLACK_MESSAGE: |
-          > 배포 상태: `${{ job.status }}`
-          > Git Commit 메세지: `${{ github.event.head_commit.message }}`
-        SLACK_USERNAME: 배포 결과 알려 드림
-        SLACK_COLOR: ${{ job.status }}
-        SLACK_FOOTER: '이건 테스트 배포 입니다.'
-      if: always()
       
