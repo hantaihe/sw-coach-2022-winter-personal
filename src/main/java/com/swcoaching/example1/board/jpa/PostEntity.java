@@ -20,7 +20,7 @@ public class PostEntity extends BaseEnitity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(length = 1000)
+  @Column(length = 500)
   private String title;
 
   @Column(columnDefinition = "text")

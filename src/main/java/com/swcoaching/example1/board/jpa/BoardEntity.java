@@ -24,13 +24,13 @@ public class BoardEntity extends BaseEnitity {
   /**
    * 게시판 제목
    */
-  @Column(length = 1000)
+  @Column(length = 500)
   private String title;
 
   /**
    * 게시판 설명
    */
-  @Column(columnDefinition = "text")
+  @Column(length = 2000)
   private String introduction;
 
   /**

@@ -14,10 +14,20 @@ public class UserEntity extends BaseEnitity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+
+  @Column(length = 500)
   private String email;
+
+  @Column(length = 500)
   private String username;
+
+  @Column(length = 500)
   private String password;
+
+  @Column(length = 500)
   private String name;
+
+  @Column(length = 2000)
   private String introduction;
 
   @OneToMany(mappedBy = "user")
