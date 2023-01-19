@@ -1,8 +1,13 @@
 package com.swcoaching.example1.board;
 
+import com.swcoaching.example1.board.dto.Board;
 import com.swcoaching.example1.board.jpa.BoardRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -21,5 +26,10 @@ public class BoardServiceImpl implements BoardService {
     return boardRepository.findById(id)
             .map(Board::of)
             .orElseThrow(() -> new BoardNotFoundException(id));
+  }
+
+  @Override
+  public List<Board> findAll() {
+    return StreamSupport.stream(boardRepository.findAll().spliterator(), false).map(Board::of).collect(Collectors.toList());
   }
 }

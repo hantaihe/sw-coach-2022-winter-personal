@@ -47,6 +47,6 @@ class UserControllerTest {
                 .andExpect(jsonPath("$.username").value(is(username)))
                 .andExpect(jsonPath("$.password").value(is(password)))
                 .andExpect(jsonPath("$.name").value(is(name)))
-                .andExpect(jsonPath("$.remark").value(is(introduction)));
+                .andExpect(jsonPath("$.introduction").value(is(introduction)));
     }
 }

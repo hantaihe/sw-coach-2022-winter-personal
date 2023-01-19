@@ -1,5 +1,6 @@
 package com.swcoaching.example1.board;
 
+import com.swcoaching.example1.board.dto.Board;
 import com.swcoaching.example1.board.jpa.BoardEntity;
 import com.swcoaching.example1.board.jpa.BoardRepository;
 import com.swcoaching.example1.board.jpa.PostEntity;

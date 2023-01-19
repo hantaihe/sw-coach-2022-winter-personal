@@ -1,7 +1,8 @@
 package com.swcoaching.example1.controller;
 
-import com.swcoaching.example1.board.Board;
+
 import com.swcoaching.example1.board.BoardService;
+import com.swcoaching.example1.board.dto.Board;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,18 +30,18 @@ class BoardControllerTest {
     @Test
     void testBoard() throws Exception {
         // given
-        long id = 1L;
+        long id = 1;
         String title = "test";
-        String remark = "test1";
-        when(boardService.findById(id)).thenReturn(new Board(id, title, remark, emptyList()));
+        String introduction = "test1";
+        when(boardService.findById(id)).thenReturn(new Board(id, title, introduction, emptyList()));
 
         // when
-        ResultActions resultActions = mockMvc.perform(get("/board/{boardId}", id)).andDo(print());
+        ResultActions resultActions = mockMvc.perform(get("/boards/{boardId}", id)).andDo(print());
 
         // then
         resultActions
                 .andExpect(jsonPath("$.id").value(is((int) id)))
                 .andExpect(jsonPath("$.title").value(is(title)))
-                .andExpect(jsonPath("$.remark").value(is(remark)));
+                .andExpect(jsonPath("$.introduction").value(is(introduction)));
     }
 }

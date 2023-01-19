@@ -9,5 +9,5 @@ spring.datasource:
 
 spring.sql.init.mode: ALWAYS
 spring.jpa:
-  hibernate.ddl-auto: update
+  hibernate.ddl-auto: create
   defer-datasource-initialization: true
