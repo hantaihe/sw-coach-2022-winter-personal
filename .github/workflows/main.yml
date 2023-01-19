@@ -1,0 +1,20 @@
+on:
+  push:
+    branches:
+    - main
+    - release/*
+  pull_request:
+    branches:
+    - main
+    
+jobs:
+  push_test:
+    name: push and build test
+    runs-on: ubuntu-18.04
+    steps:
+    - name: Gradle Build Action
+      uses: gradle/gradle-build-action@v2.3.3
+      
+    - name: Gradle Test
+      run: ./gradlew test
+    
